@@ -83,7 +83,11 @@ Se modifica HttpMetod.
 El siguiente paso es mover toda la lógica http de get a una clase component.
 De esta forma queda más claro el http
 
-Con Service y Spring podemos ahorrarnos el trabajo de instanciar una clase manualmente.
+Con Component/Service y Spring podemos ahorrarnos el trabajo de instanciar una clase manualmente.
 
-@Service gestiona esta clase.
+@Service es una especializacion de Comoonent y gestiona la lógica / rol de la clase.-> 
+Servicio crea una instancia de la clase, un objeto de clase
 Spring crea una instancia de esa clase (un "bean") y la guarda en el contenedor de beans
+
+Patrón de diseño usado por component / service Dendency injection - patrón que permite a los 
+objetos recibir sus dependencias de una fuente externa.
