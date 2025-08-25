@@ -1,0 +1,74 @@
+## Este desarrollo pertenece al curso Java Programing and Basics of Spring Boot **Microservices**
+
+# Sección 5: REST API and Spring Boot
+
+## Creación de un microservicio.
+
+REST -> REpresentational State Transfer.
+Client-Server architecture: HTTP Request.
+No se almacena información del ciente.
+Cacheable data.
+Rápida y Ligera
+
+Pasos antes de comenzar. No se explica en videos
+Instalar Eclipse IDE.
+Instalar Springboot Tools.
+Se explica: Postman.
+
+Ambos programas es bajar y descomprimir. Puede ser necesario configurar las variables de entorno
+para Java.
+Instalar la versión de Java y asociar en la configuración a la Versión de JAVA.
+
+Este proyecto se lanza directamente desde SpringBoot Tools a diferencia del seguido en el curso.
+Se crea un Spring Starter Project.
+Se usa Maven.
+Postman para ver HTTP Methods: - principales.
+GET: Retrieve information about the REST API resource.
+POST: Create a resource.
+PUT: Update a resource.
+DELETE: Delete a REST API resource or related component.
+
+HTTP STATUS CODES:
+2XX: successful
+3xx: redirection
+4xx: client error.
+5xx: server error.
+
+JSON object notation - lenguaje de comunicación entre otros lenguajes.
+String "", Number, object {}, array [], boolean (true/false) and null
+par clave valor.
+ejemplo:
+{
+"firstName": "John Doe",
+"age": 21,
+"items": {},
+"hasBooks": []
+}
+
+Configurar el pom, se añade servicio web SpringBoot.
+En la clase principal se crea un método run para lanzar el servidor.
+src/main/resources/application.properties
+se añade
+server.port=8081.
+
+
+Pasos:
+1. mvn install
+- Refrescar target folder en el proyecto.
+2. mvn spring-bost:run (lanza el servidor Tomcat)
+3. ctrl + c cerrar el servidor.
+
+A tener en cuenta:
+Cualquier cambio en el código hay que parar el servidor y volver a lanzarlo.
+
+1. Crear paquete de Controladores con clase TestHttpMethod.Java
+2. La clase es un restcontroller - se comentan breves fragmentos de código 
+
+
+Se hacen distintas pruebas con el método GET, para tomar variables y parámetros (@RequestParam).
+Se introduce try-catch para evitar que el parámetro al ser de tipo distinto arroje un error.
+
+Si no ponemos parámetro puede arrojar también error, se puede poner el parámetro opcional para
+que no arroje error.
+
+@RequestParam Optional<String> age - instalar librería java.util
