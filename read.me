@@ -79,3 +79,11 @@ En el try tenemos que recoger la edad con age.get() porque sino arroja el error 
 
 Se añade una clase Persona para usar el endpoint get con ella.
 Se modifica HttpMetod.
+
+El siguiente paso es mover toda la lógica http de get a una clase component.
+De esta forma queda más claro el http
+
+Con Service y Spring podemos ahorrarnos el trabajo de instanciar una clase manualmente.
+
+@Service gestiona esta clase.
+Spring crea una instancia de esa clase (un "bean") y la guarda en el contenedor de beans
