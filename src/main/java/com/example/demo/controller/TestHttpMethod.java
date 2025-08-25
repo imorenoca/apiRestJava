@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.pojo.Person;
+
 // indica que la clase es un controlador Rest
 @RestController
 public class TestHttpMethod {
@@ -21,10 +23,9 @@ public class TestHttpMethod {
 	// http://localhost:8081/person/fn/John/ln/Doe?age=55
 	// se incluye una clase ResponseEntity para añadir los mensajes del Servidor
 	@GetMapping("/person/fn/{firstName}/ln/{lastName}")
-	public ResponseEntity<String> getCustomMessage(@PathVariable(value = "firstName") String fName,
-			@PathVariable String lastName,
-			// se da un parametro con ? Error 400 Bad Request si se pone por ej. 21a
-			// @RequestParam Integer age - Solución tray-catch
+	public ResponseEntity<Person> getCustomMessage(
+			@PathVariable(value = "firstName") String fName,
+			@PathVariable(value = "lastName") String lName,
 			@RequestParam Optional<String> age) {
 		Integer personAge = 0;
 		if (age.isPresent()) {
@@ -32,14 +33,16 @@ public class TestHttpMethod {
 				personAge = Integer.parseInt(age.get());
 			} catch (Exception e) {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-						.body("Age should be Numeric");
+						.body(null);
 			}
+			Person person=new Person(fName, lName, personAge);
 			return ResponseEntity.status(HttpStatus.OK)
-					.body("Your name is " + fName + " " + lastName 
-							+ " and your age is: " + personAge);
+					.body(person);
 		}
+		Person person=new Person(fName, lName);
+
 		return ResponseEntity.status(HttpStatus.OK)
-				.body("Your name is " + fName + " " + lastName);
+				.body(person);
 
 	}
 }
